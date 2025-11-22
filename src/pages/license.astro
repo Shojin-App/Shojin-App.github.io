@@ -75,7 +75,7 @@ const htmlContent = `<h1>ライセンス</h1>
   .license-intro {
     background: var(--surface-container);
     padding: 1.5rem;
-    border-radius: 8px;
+    border-radius: var(--radius-large);
     margin-bottom: 2rem;
   }
 
@@ -91,10 +91,11 @@ const htmlContent = `<h1>ライセンス</h1>
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--radius-large);
     text-decoration: none;
-    transition: all 0.3s ease;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .button.primary {
@@ -110,7 +111,7 @@ const htmlContent = `<h1>ライセンス</h1>
   .license-text {
     background: var(--surface-container);
     padding: 1.5rem;
-    border-radius: 8px;
+    border-radius: var(--radius-medium);
     overflow-x: auto;
     font-family: monospace;
     font-size: 0.85rem;

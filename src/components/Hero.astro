@@ -1,37 +1,76 @@
 <section class="responsive large-padding">
   <div class="grid middle-align">
     <div class="s12 m6 l6">
-      <h1 class="display large-text text-gradient bold">Shojin App</h1>
-      <h2 class="headline large-text bold" style="font-size: 3rem; line-height: 1.2;">
+      <h1 class="display-medium text-gradient bold">Shojin App</h1>
+      <h2 class="display-large bold" style="margin-top: 1rem; margin-bottom: 1.5rem;">
         AtCoderの精進を<br>スマホでも。
       </h2>
-      <p class="medium-text opacity-text">
+      <p class="body-large" style="color: var(--on-surface-variant); max-width: 500px;">
         問題閲覧、コーディング、テスト、提出まで。<br>
         スマホひとつで完結する競プロ環境。
       </p>
       <div class="space large"></div>
-      <nav>
-        <a href="https://github.com/Shojin-App/shojin_app/releases" target="_blank" class="button fill primary wave rounded">
+      <nav class="hero-buttons">
+        <a href="https://github.com/Shojin-App/shojin_app/releases" 
+           target="_blank" 
+           class="button fill primary wave">
           <span>ダウンロード</span>
         </a>
-        <a href="https://github.com/ImranR98/Obtainium" target="_blank" class="button border wave rounded obtainium-btn">
+        <a href="https://github.com/ImranR98/Obtainium" 
+           target="_blank" 
+           class="button border wave obtainium-btn">
           <span>Obtainiumで入手</span>
         </a>
       </nav>
     </div>
     <div class="s12 m6 l6 center-align relative">
       <div class="glow-bg"></div>
-      <img src="/images/hero-mockup.png" alt="Shojin App Mockup" class="responsive rounded elevation-3" style="max-height: 600px; border: 4px solid var(--surface); border-radius: 24px; position: relative; z-index: 1;">
+      <img src="/images/hero-mockup.png" 
+           alt="Shojin App Mockup" 
+           class="responsive mockup-image">
     </div>
   </div>
 </section>
 
 <style>
-  .opacity-text {
-    opacity: 0.7;
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
+
+  .hero-buttons .button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hero-buttons .button:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--elevation-3);
+  }
+
   .obtainium-btn {
-    border-color: var(--on-surface);
+    border-color: var(--outline);
     color: var(--on-surface);
+  }
+
+  .obtainium-btn:hover {
+    border-color: var(--primary);
+    background: var(--surface-container-high);
+  }
+
+  .mockup-image {
+    max-height: 600px;
+    border: 4px solid var(--surface-container);
+    border-radius: var(--radius-extra-large);
+    position: relative;
+    z-index: 1;
+    box-shadow: var(--elevation-3);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .mockup-image:hover {
+    transform: scale(1.02);
+    box-shadow: var(--elevation-4);
   }
 </style>
