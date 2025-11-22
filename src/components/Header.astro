@@ -1,8 +1,8 @@
 <header class="responsive transparent top-nav">
   <nav class="transparent">
-    <a href="/" class="home-link">
+    <a href="/" class="home-link max">
       <img src="/app_icon.png" alt="Shojin App Icon" class="app-icon" />
-      <h5 class="headline-medium text-gradient bold">Shojin App</h5>
+      <span class="headline-medium text-gradient bold">Shojin App</span>
     </a>
     <div class="space"></div>
     <button id="theme-toggle" class="circle transparent">
@@ -62,6 +62,13 @@
     align-items: center;
     text-decoration: none;
     color: inherit;
+    justify-content: flex-start;
+  }
+
+  .home-link span {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
   }
 
   .app-icon {
@@ -70,6 +77,7 @@
     margin-right: 12px;
     border-radius: 0;
     object-fit: contain;
+    display: block;
   }
 
   .github-button {
