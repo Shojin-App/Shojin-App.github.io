@@ -5,8 +5,11 @@
     <button id="theme-toggle" class="circle transparent">
       <i class="material-symbols-rounded">light_mode</i>
     </button>
-    <a href="https://github.com/Shojin-App/shojin_app" target="_blank" class="button circle transparent">
-      <img class="github-icon" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width: 24px; height: 24px;">
+    <a href="https://twitter.com/search?q=%23Shojin_App" target="_blank" class="button circle transparent twitter-button">
+      <img class="twitter-icon" src="/twitter-icon.svg" alt="Twitter">
+    </a>
+    <a href="https://github.com/Shojin-App/shojin_app" target="_blank" class="button circle transparent github-button">
+      <img class="github-icon" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
     </a>
   </nav>
 </header>
@@ -34,10 +37,50 @@
 </script>
 
 <style>
+  .github-button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .github-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    border-radius: 0 !important;
+  }
+
   :global(body.dark) .github-icon {
     filter: invert(1);
   }
   :global(body.light) .github-icon {
     filter: none;
+  }
+
+  .twitter-button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .twitter-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    border-radius: 0 !important; /* Prevent inherited border-radius */
+  }
+
+  :global(body.dark) .twitter-icon {
+    filter: brightness(0) invert(1); /* White in dark mode */
+  }
+  
+  :global(body.light) .twitter-icon {
+    filter: brightness(0); /* Black in light mode */
   }
 </style>
