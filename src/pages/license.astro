@@ -1,0 +1,130 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { marked } from 'marked';
+
+// GitHubからライセンスファイルを取得
+const LICENSE_URL = 'https://github.com/Shojin-App/shojin_app/raw/refs/heads/main/LICENSE';
+const response = await fetch(LICENSE_URL);
+const licenseText = await response.text();
+
+// ライセンステキストをHTMLに変換（preタグで整形）
+const htmlContent = `<h1>ライセンス</h1>
+<div class="license-intro">
+  <p>
+    Shojin Appは<strong>GNU General Public License v3.0 (GPL-3.0)</strong>の下でライセンスされています。
+  </p>
+  <p>
+    このライセンスは、ソフトウェアの自由な共有と変更の自由を保証するコピーレフトライセンスです。
+  </p>
+  <div class="button-group">
+    <a href="${LICENSE_URL}" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="button primary">
+      <i>open_in_new</i>
+      <span>GitHubで見る</span>
+    </a>
+  </div>
+</div>
+<h2>ライセンス全文</h2>
+<pre class="license-text">${licenseText}</pre>`;
+---
+
+<Layout title="ライセンス | Shojin-App">
+  <Header />
+  <main class="responsive">
+    <div class="large-padding">
+      <article class="markdown-content" set:html={htmlContent} />
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .markdown-content {
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .markdown-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary);
+  }
+
+  .markdown-content h2 {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+  }
+
+  .markdown-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .markdown-content p {
+    margin-bottom: 1rem;
+  }
+
+  .license-intro {
+    background: var(--surface-container);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .license-intro p {
+    font-size: 1.1rem;
+  }
+
+  .button-group {
+    margin-top: 1.5rem;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .button.primary {
+    background: var(--primary);
+    color: var(--on-primary);
+  }
+
+  .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .license-text {
+    background: var(--surface-container);
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-content a {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+
+  .markdown-content a:hover {
+    opacity: 0.8;
+  }
+</style>

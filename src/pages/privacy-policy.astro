@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { marked } from 'marked';
+
+// GitHubからプライバシーポリシーのMarkdownを取得
+const PRIVACY_POLICY_URL = 'https://github.com/Shojin-App/shojin_app/raw/refs/heads/main/PRIVACY_POLICY.md';
+const response = await fetch(PRIVACY_POLICY_URL);
+const markdown = await response.text();
+
+// MarkdownをHTMLに変換
+const htmlContent = marked(markdown);
+---
+
+<Layout title="プライバシーポリシー | Shojin-App">
+  <Header />
+  <main class="responsive">
+    <div class="large-padding">
+      <article class="markdown-content" set:html={htmlContent} />
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .markdown-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .markdown-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary);
+  }
+
+  .markdown-content h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+  }
+
+  .markdown-content p {
+    margin-bottom: 1rem;
+  }
+
+  .markdown-content ol {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .markdown-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .markdown-content a {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+
+  .markdown-content a:hover {
+    opacity: 0.8;
+  }
+</style>
