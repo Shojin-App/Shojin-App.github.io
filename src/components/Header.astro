@@ -2,8 +2,42 @@
   <nav class="transparent">
     <h5 class="max text-gradient bold" style="font-size: 1.5rem;">Shojin App</h5>
     <div class="space"></div>
+    <button id="theme-toggle" class="circle transparent">
+      <i class="material-symbols-rounded">light_mode</i>
+    </button>
     <a href="https://github.com/Shojin-App/Shojin-App" target="_blank" class="button circle transparent">
-      <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width: 24px; height: 24px; filter: invert(1);">
+      <img class="github-icon" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width: 24px; height: 24px;">
     </a>
   </nav>
 </header>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = themeToggle?.querySelector('i');
+
+  const updateIcon = () => {
+    if (!themeIcon) return;
+    const isDark = document.body.classList.contains('dark');
+    themeIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
+  };
+
+  // Initial update
+  updateIcon();
+
+  themeToggle?.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    document.body.classList.toggle('light');
+    const isDark = document.body.classList.contains('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateIcon();
+  });
+</script>
+
+<style>
+  :global(body.dark) .github-icon {
+    filter: invert(1);
+  }
+  :global(body.light) .github-icon {
+    filter: none;
+  }
+</style>
